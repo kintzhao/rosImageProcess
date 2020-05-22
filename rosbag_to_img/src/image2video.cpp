@@ -46,11 +46,10 @@ int main(int argc, char **argv)
     std::string video_path =  image_output_dir +"/"+ std::string(argv[3])+".avi";
 
     //std::string OPENCV_WINDOW = "Image window";
+    //cv::namedWindow(OPENCV_WINDOW, 0);
     ///< load bag file
     rosbag::Bag bag;
     bag.open(bag_path, rosbag::bagmode::Read);
-
-    cv::namedWindow(OPENCV_WINDOW, 0);
 
     ///< topic setup
     std::vector<std::string> topics;
