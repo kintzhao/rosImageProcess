@@ -10,7 +10,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <sstream>
 
-static const std::string TOPIC_NAME = "/image";
+static const std::string TOPIC_NAME = "/rs/rgb0/image";
 static const std::string DEPTH_TOPIC_NAME = "camera/depth/image_raw";
 
 std::string save_path = "/tmp/";
@@ -20,7 +20,7 @@ std::string image_name = "image0_";
     int fps = 30;
     int frameWidth = 1280;
     int frameHeight = 720;
-    cv::VideoWriter  video_writer("/tmp/current_video.avi", cv::VideoWriter::fourcc('M','J','P','G'), fps, cv::Size(frameWidth, frameHeight), isColor);
+    cv::VideoWriter  video_writer("/tmp/rs_video.avi", cv::VideoWriter::fourcc('M','J','P','G'), fps, cv::Size(frameWidth, frameHeight), isColor);
  
 
 
@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
     cv::startWindowThread();
     image_transport::ImageTransport it(nh);
     std::string topic_name;
-    nh.param("topic_name", topic_name, std::string("/image"));
+    nh.param("/topic_name", topic_name, std::string("/rs/rgb0/image"));
 
     image_transport::Subscriber sub = it.subscribe(topic_name, 1, imageCallback);
     //image_transport::Subscriber sub_depth = it.subscribe(DEPTH_TOPIC_NAME, 1, imageDepthCallback);

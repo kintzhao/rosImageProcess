@@ -1,0 +1,5 @@
+<launch>
+  <node name="imageCapture" pkg="imageCapture" type="ros2img_rs" output="screen" >
+      <param name="topic_name" value="/rs/rgb0/image"/>
+  </node>
+</launch>
